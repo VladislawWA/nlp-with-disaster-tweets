@@ -11,9 +11,8 @@ from nltk.stem import WordNetLemmatizer
 import sklearn.feature_extraction as fe
 from sklearn.naive_bayes import MultinomialNB
 
-base_dir = 'D:/Users/Vladislav/Documents/Jupyter Notebook/Лабораторные работы/Программная инженерия'
-train_data = pd.read_csv(base_dir + '/nlp-getting-started/train.csv')
-test_data = pd.read_csv(base_dir + '/nlp-getting-started/test.csv')
+train_data = pd.read_csv('./nlp-getting-started/train.csv')
+test_data = pd.read_csv('./nlp-getting-started/test.csv')
 stop_words = nltk.corpus.stopwords.words('english')
 
 count_vec = fe.text.CountVectorizer(stop_words=stop_words)
