@@ -1,7 +1,7 @@
-numpy
 pandas
-matplotlib
 scikit-learn
 nltk
 fastapi
+pytest
 uvicorn
+httpx
