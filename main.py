@@ -8,6 +8,9 @@ import uvicorn
 import nltk
 import sklearn
 
+% python3 -m nltk.downloader wordnet
+% unzip /root/nltk_data/corpora/wordnet.zip -d /root/nltk_data/corpora/
+
 from nltk.stem import WordNetLemmatizer
 import sklearn.feature_extraction as fe
 from sklearn.naive_bayes import MultinomialNB
