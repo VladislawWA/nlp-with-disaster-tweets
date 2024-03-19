@@ -1,6 +1,5 @@
 import fastapi
 from fastapi import FastAPI
-import numpy as np
 import pandas as pd
 from typing import Annotated
 from pydantic import BaseModel
