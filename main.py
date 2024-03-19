@@ -7,9 +7,12 @@ from pydantic import BaseModel
 import uvicorn
 import nltk
 import sklearn
+import zipfile
 
-% python3 -m nltk.downloader wordnet
-% unzip /root/nltk_data/corpora/wordnet.zip -d /root/nltk_data/corpora/
+nltk.download("wordnet")
+
+with zipfile.ZipFile("wordnet", 'r') as zip_ref:
+    zip_ref.extractall("corpora/wordnet.zip/wordnet/")
 
 from nltk.stem import WordNetLemmatizer
 import sklearn.feature_extraction as fe
