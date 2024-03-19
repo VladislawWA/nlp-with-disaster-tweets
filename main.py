@@ -13,7 +13,7 @@ from sklearn.naive_bayes import MultinomialNB
 
 train_data = pd.read_csv('./nlp-getting-started/train.csv')
 test_data = pd.read_csv('./nlp-getting-started/test.csv')
-stop_words = nltk.corpus.stopwords.words('english')
+stop_words = ['i', 'me', 'he', 'she', 'we', 'the', 'a', 'on']
 
 count_vec = fe.text.CountVectorizer(stop_words=stop_words)
 tfidf_transformer = fe.text.TfidfTransformer()
