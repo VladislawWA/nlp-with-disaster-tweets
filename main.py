@@ -5,11 +5,10 @@ import pandas as pd
 from typing import Annotated
 from pydantic import BaseModel
 import uvicorn
-
 import nltk
-from nltk.stem import WordNetLemmatizer
-
 import sklearn
+
+from nltk.stem import WordNetLemmatizer
 import sklearn.feature_extraction as fe
 from sklearn.naive_bayes import MultinomialNB
 
