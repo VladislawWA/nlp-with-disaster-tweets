@@ -11,7 +11,7 @@ import zipfile
 
 nltk.download("wordnet")
 
-with zipfile.ZipFile("wordnet", 'r') as zip_ref:
+with zipfile.ZipFile("wordnet.zip", 'r') as zip_ref:
     zip_ref.extractall("corpora/wordnet.zip/wordnet/")
 
 from nltk.stem import WordNetLemmatizer
