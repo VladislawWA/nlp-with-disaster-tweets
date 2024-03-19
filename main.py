@@ -2,8 +2,6 @@ import fastapi
 from fastapi import FastAPI
 import numpy as np
 import pandas as pd
-import matplotlib as plt
-import os
 from typing import Annotated
 from pydantic import BaseModel
 import uvicorn
@@ -48,12 +46,19 @@ def predict(tweet):
 app = FastAPI()
 
 
-@app.post('/predict')
-async def pred(
-        tweet: str,
-):
-    tweet_pred = tweet
-    tweet = tweet_processing(tweet_pred)
-    pred = clf.predict(tweet)
+class Item(BaseModel):
+    text: str
 
-    return {"predict": f"{pred[0]}"}
+
+@app.post('/predict/')
+def pred(tweet: Item):
+    tweet_pred = tweet.text
+    tweet = tweet_processing(tweet_pred)
+    pred = clf.predict(tweet)[0]
+
+    return {"predict": f"{pred}"}
+
+
+@app.get('/info')
+def info():
+    return {"info": "Naive Bayas model"}
