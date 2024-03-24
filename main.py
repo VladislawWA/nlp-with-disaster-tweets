@@ -1,43 +1,40 @@
 import fastapi
 from fastapi import FastAPI
-import numpy as np
 import pandas as pd
 from typing import Annotated
 from pydantic import BaseModel
-import uvicorn
-import nltk
-import sklearn
-import zipfile
-
-nltk.download("wordnet")
-
-with zipfile.ZipFile("wordnet.zip", 'r') as zip_ref:
-    zip_ref.extractall("corpora/wordnet.zip/wordnet/")
+from joblib import load
 
 from nltk.stem import WordNetLemmatizer
+
 import sklearn.feature_extraction as fe
 from sklearn.naive_bayes import MultinomialNB
+from sklearn.pipeline import Pipeline
 
+
+# load data
 train_data = pd.read_csv('./nlp-getting-started/train.csv')
 test_data = pd.read_csv('./nlp-getting-started/test.csv')
-stop_words = ['the', 'a', 'at', 'an', 'on',  'i', 'we', 'he', 'she', 'they']
 
-count_vec = fe.text.CountVectorizer(stop_words=stop_words)
-tfidf_transformer = fe.text.TfidfTransformer()
+
+# used lemms
 lemmatizer = WordNetLemmatizer()
-
 lemm_train_data = [lemmatizer.lemmatize(word) for word in train_data['text']]
-train_tok = count_vec.fit_transform(lemm_train_data)
-tf_train_tok = tfidf_transformer.fit_transform(train_tok)
 
+
+# used pipeline
+pipe = load('./pipe_data_transf.joblib')
+tf_train_tok = pipe.transform(train_data)
+
+
+# model
 clf = MultinomialNB().fit(tf_train_tok, train_data['target'])
 
 
 def tweet_processing(tweet):
     lemma = [lemmatizer.lemmatize(word) for word in [tweet]]
 
-    tokens = count_vec.transform(lemma)
-    tfidf_tokens = tfidf_transformer.transform(tokens)
+    tfidf_tokens = pipe.transform(lemma)
 
     return tfidf_tokens
 
