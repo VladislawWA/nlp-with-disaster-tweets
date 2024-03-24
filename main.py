@@ -5,7 +5,7 @@ from typing import Annotated
 from pydantic import BaseModel
 from joblib import load
 
-from nltk.stem import WordNetLemmatizer
+#from nltk.stem import WordNetLemmatizer
 
 import sklearn.feature_extraction as fe
 from sklearn.naive_bayes import MultinomialNB
@@ -18,8 +18,8 @@ test_data = pd.read_csv('./nlp-getting-started/test.csv')
 
 
 # used lemms
-lemmatizer = WordNetLemmatizer()
-lemm_train_data = [lemmatizer.lemmatize(word) for word in train_data['text']]
+#lemmatizer = WordNetLemmatizer()
+#lemm_train_data = [lemmatizer.lemmatize(word) for word in train_data['text']]
 
 
 # used pipeline
