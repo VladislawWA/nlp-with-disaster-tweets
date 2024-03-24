@@ -32,9 +32,9 @@ clf = MultinomialNB().fit(tf_train_tok, train_data['target'])
 
 
 def tweet_processing(tweet):
-    lemma = [lemmatizer.lemmatize(word) for word in [tweet]]
+    #lemma = [lemmatizer.lemmatize(word) for word in [tweet]]
 
-    tfidf_tokens = pipe.transform(lemma)
+    tfidf_tokens = pipe.transform(tweet)
 
     return tfidf_tokens
 
