@@ -11,6 +11,7 @@ import sklearn.feature_extraction as fe
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
 
+app = FastAPI()
 
 # load data
 train_data = pd.read_csv('./nlp-getting-started/train.csv')
@@ -43,9 +44,6 @@ def predict(tweet):
     pred = clf.predict(tweet)
 
     return pred
-
-
-app = FastAPI()
 
 
 class Item(BaseModel):
