@@ -19,8 +19,8 @@ test_data = pd.read_csv('./nlp-getting-started/test.csv')
 
 
 # used lemms
-#lemmatizer = WordNetLemmatizer()
-#lemm_train_data = [lemmatizer.lemmatize(word) for word in train_data['text']]
+lemmatizer = WordNetLemmatizer()
+lemm_train_data = [lemmatizer.lemmatize(word) for word in train_data['text']]
 
 
 # used pipeline
@@ -33,7 +33,7 @@ clf = MultinomialNB().fit(tf_train_tok, train_data['target'])
 
 
 def tweet_processing(tweet):
-    #lemma = [lemmatizer.lemmatize(word) for word in [tweet]]
+    lemma = [lemmatizer.lemmatize(word) for word in [tweet]]
 
     tfidf_tokens = pipe.transform(tweet)
 
