@@ -17,6 +17,11 @@ app = FastAPI()
 train_data = pd.read_csv('./nlp-getting-started/train.csv')
 test_data = pd.read_csv('./nlp-getting-started/test.csv')
 
+nltk.download('omw-1.4')
+nltk.download('wordnet')
+nltk.download('wordnet2022')
+nlp = load('en_core_web_sm')
+
 
 # used lemms
 lemmatizer = WordNetLemmatizer()
