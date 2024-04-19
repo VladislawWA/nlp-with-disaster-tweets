@@ -5,6 +5,7 @@ from typing import Annotated
 from pydantic import BaseModel
 from joblib import load
 
+import nltk
 from nltk.stem import WordNetLemmatizer
 
 import sklearn.feature_extraction as fe
