@@ -21,7 +21,6 @@ test_data = pd.read_csv('./nlp-getting-started/test.csv')
 nltk.download('omw-1.4')
 nltk.download('wordnet')
 nltk.download('wordnet2022')
-nlp = load('en_core_web_sm')
 
 
 # used lemms
@@ -31,7 +30,7 @@ lemm_train_data = [lemmatizer.lemmatize(word) for word in train_data['text']]
 
 # used pipeline
 pipe = load('./pipe_data_transf.joblib')
-tf_train_tok = pipe.transform(train_data)
+tf_train_tok = pipe.transform(lemm_train_data)
 
 
 # model
@@ -41,7 +40,7 @@ clf = MultinomialNB().fit(tf_train_tok, train_data['target'])
 def tweet_processing(tweet):
     lemma = [lemmatizer.lemmatize(word) for word in [tweet]]
 
-    tfidf_tokens = pipe.transform(tweet)
+    tfidf_tokens = pipe.transform(lemma)
 
     return tfidf_tokens
 
