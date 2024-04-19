@@ -5,7 +5,7 @@ from typing import Annotated
 from pydantic import BaseModel
 from joblib import load
 
-#from nltk.stem import WordNetLemmatizer
+from nltk.stem import WordNetLemmatizer
 
 import sklearn.feature_extraction as fe
 from sklearn.naive_bayes import MultinomialNB
